@@ -19,7 +19,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class RepositoriesTest {
 
-    /*
     @MockBean
     PasswordEncoder passwordEncoder;
 
@@ -125,7 +124,4 @@ public class RepositoriesTest {
         List<Transaction> transactions = transactionRepository.findAll();
         assertThat(transactions, hasItem(hasProperty("description", is("Carpinteria"))));
     }
-
-
-     */
 }

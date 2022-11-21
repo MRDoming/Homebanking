@@ -25,7 +25,7 @@ dependencies {
 
 	runtimeOnly 'com.h2database:h2'
 
-	implementation 'org.postgresql:postgresql'
+	//implementation 'org.postgresql:postgresql'
 
 	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
 

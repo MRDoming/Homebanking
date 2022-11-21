@@ -71,22 +71,22 @@ public class HomebankingApplication {
 			transactionRepository.save(trans3);
 			transactionRepository.save(trans4);
 			transactionRepository.save(trans5);
-			transactionRepository.save(trans6);
+			transactionRepository.save(trans6);*/
 
 			List<Integer> cuotasH = List.of(12, 24, 36, 48, 60);
 			List<Integer> cuotasP = List.of(6, 12, 24);
 			List<Integer> cuotasA = List.of(6, 12, 24, 36);
 
 
-			Loan hipotecario = new Loan("Hipotecario", 500000.00, cuotasH);
-			Loan personal = new Loan("Personal", 100000.00, cuotasP);
-			Loan auntomotriz = new Loan("Automotriz", 300000.00, cuotasA);
+			Loan hipotecario = new Loan("Hipotecario", 500000.00, cuotasH, 1.20);
+			Loan personal = new Loan("Personal", 100000.00, cuotasP, 1.30);
+			Loan auntomotriz = new Loan("Automotriz", 300000.00, cuotasA, 1.10);
 
 			loanRepository.save(hipotecario);
 			loanRepository.save(personal);
 			loanRepository.save(auntomotriz);
 
-			ClientLoan prestMelva1 = new ClientLoan(400000.00, 60, client1, hipotecario);
+			/*ClientLoan prestMelva1 = new ClientLoan(400000.00, 60, client1, hipotecario);
 			ClientLoan prestMelva2 = new ClientLoan(50000.00, 12, client1, personal);
 
 			ClientLoan prestCoper1 = new ClientLoan(10000.00, 24, client2, personal);

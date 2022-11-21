@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            tarjetasInfo: [{ nombre: "Hipotecario", img: "./img/casa.jpg", interes: 20 }, { nombre: "Personal", img: "./img/personal.jpg", interes: 13 }, { nombre: "Automotriz", img: "./img/auto.jpg", interes: 10 }, { nombre: "Estudiantil", img: "./img/estudiantil.jpg", interes: 20 }], /* , { nombre: "Credito", img: "./img/credito.jpg", interes: 30 }*/
+            tarjetasInfo: [{ nombre: "Hipotecario", img: "./img/casa.jpg", interes: 20 }, { nombre: "Personal", img: "./img/personal.jpg", interes: 13 }, { nombre: "Automotriz", img: "./img/auto.jpg", interes: 10 }], /* , { nombre: "Estudiantil", img: "./img/estudiantil.jpg", interes: 20 }, { nombre: "Credito", img: "./img/credito.jpg", interes: 30 }*/
             info: [],
             prestamos: [],
             prestamo: [],

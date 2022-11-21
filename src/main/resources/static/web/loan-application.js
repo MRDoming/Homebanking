@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            tarjetasInfo: [{ id: 21, img: "./img/casa.jpg", interes: 20 }, { id: 22, img: "./img/personal.jpg", interes: 13 }, { id: 23, img: "./img/auto.jpg", interes: 10 }, { id: 99, img: "./img/estudiantil.jpg", interes: 20 }],
+            tarjetasInfo: [{ nombre: "Hipotecario", img: "./img/casa.jpg", interes: 20 }, { nombre: "Personal", img: "./img/personal.jpg", interes: 13 }, { nombre: "Automotriz", img: "./img/auto.jpg", interes: 10 }, { nombre: "Estudiantil", img: "./img/estudiantil.jpg", interes: 20 }, { nombre: "Credito", img: "./img/credito.jpg", interes: 30 }],
             info: [],
             prestamos: [],
             prestamo: [],
@@ -33,7 +33,7 @@ const app = Vue.createApp({
                     this.prestamos = response.data
                     this.tarjetasInfo.forEach(imagen => {
                         this.prestamos.forEach(prestamo => {
-                            if (imagen.id == prestamo.id) {
+                            if (imagen.nombre == prestamo.name) {
                                 Object.assign(imagen, prestamo)
                             }
                         })

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Pagos | CoperBank</title>
+      <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+      <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+      <link rel="stylesheet" href="./payments.css">
+</head>
+
+<body>
+      <div id="app">
+            <header class="d-flex">
+                  <nav class="navbar bg-light w-50 coper">
+                        <div class="container-fluid">
+                              <a class="navbar-brand" href="./index.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                          class="icon icon-tabler icon-tabler-currency-cent" width="44" height="44"
+                                          viewBox="0 0 24 24" stroke-width="2.5" stroke="#7bc62d" fill="none"
+                                          stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                          <path
+                                                d="M16.007 7.54a5.965 5.965 0 0 0 -4.008 -1.54a5.996 5.996 0 0 0 -5.992 6c0 3.314 2.682 6 5.992 6a5.965 5.965 0 0 0 4.004 -1.536" />
+                                          <path d="M12 20v-2" />
+                                          <path d="M12 6v-2" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                          class="icon icon-tabler icon-tabler-currency-bitcoin" width="44" height="44"
+                                          viewBox="0 0 24 24" stroke-width="2.5" stroke="#7bc62d" fill="none"
+                                          stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                          <path d="M6 6h8a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-8" />
+                                          <line x1="8" y1="6" x2="8" y2="18" />
+                                          <line x1="8" y1="12" x2="14" y2="12" />
+                                          <line x1="9" y1="3" x2="9" y2="6" />
+                                          <line x1="13" y1="3" x2="13" y2="6" />
+                                          <line x1="9" y1="18" x2="9" y2="21" />
+                                          <line x1="13" y1="18" x2="13" y2="21" />
+                                    </svg>
+                                    CoperBank
+                              </a>
+                        </div>
+                  </nav>
+                  <nav class="navbar navbar-expand-lg bg-light w-50">
+                        <div class="container-fluid d-flex justify-content-end">
+                              <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                              </button>
+                              <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                                    <div class="navbar-nav">
+                                          <a class="nav-link" href="./index.html">Inicio</a>
+                                          <a class="nav-link" href="./extras/tarjetas.html">Tarjetas</a>
+                                          <a class="nav-link active" href="#">Pagos</a>
+                                    </div>
+                              </div>
+                        </div>
+                  </nav>
+            </header>
+
+
+            <main class="p-3 d-flex flex-column">
+                  <div class="d-flex flex-column text-center">
+                        <h1>Bienvenido a CoperBank - Pagos</h1>
+                        <h6>Tu banco de confianza, tu pago seguro</h6>
+                  </div>
+
+                  <div class="d-flex gap-3 align-self-center movil">
+
+                        <!-- FORMULARIO PAGOS -->
+                        <div class="d-flex flex-column gap-3 text-end mt-4">
+                              <div>
+                                    <label class="me-2" for="numero">Numero tarjeta:</label>
+                                    <input class="inpuntMovil" v-model="numeroTarjetavModel" type="number" name="numero" id="numero">
+                              </div>
+                              <div>
+                                    <label class="me-2" for="cvv">CVV:</label>
+                                    <input class="inpuntMovil" v-model="cvvvModel" type="number" name="cvv" id="cvv">
+                              </div>
+                              <div>
+                                    <label class="me-2" for="monto">Monto:</label>
+                                    <input class="inpuntMovil" v-model="montovModel" type="number" name="monto" id="monto">
+                              </div>
+                              <div>
+                                    <label class="me-2" for="descripcion">Descripción:</label>
+                                    <input class="inpuntMovil" v-model="descripcionvModel" type="text" name="descripcion" id="descripcion">
+                              </div>
+                              <button class="btn border border-success verde w-50 align-self-center" :class="{'disabled': numeroTarjetavModel == '' || cvvvModel == 0 || montovModel == 0 || descripcionvModel == '' }" @click.prevent="realizarPago()">Pagar</button>
+                        </div>
+
+                        <!--TARJETA-->
+                        <div>
+                              <div class="d-flex flex-wrap justify-content-center m-3 gap-3 tarjetaMovil">
+                                    <div class="cardCredit cardCreditMovil">
+                                          <div class="cardCredit__front cardCredit__part cardCreditMovil">
+                                                <div class="d-flex justify-content-between cardCreditMovil">
+                                                      <div>
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                  class="icon icon-tabler icon-tabler-currency-cent"
+                                                                  width="35" height="35" viewBox="0 0 24 24"
+                                                                  stroke-width="2.5" stroke="#7bc62d" fill="none"
+                                                                  stroke-linecap="round" stroke-linejoin="round">
+                                                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                                  <path
+                                                                        d="M16.007 7.54a5.965 5.965 0 0 0 -4.008 -1.54a5.996 5.996 0 0 0 -5.992 6c0 3.314 2.682 6 5.992 6a5.965 5.965 0 0 0 4.004 -1.536" />
+                                                                  <path d="M12 20v-2" />
+                                                                  <path d="M12 6v-2" />
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                  class="icon icon-tabler icon-tabler-currency-bitcoin"
+                                                                  width="35" height="35" viewBox="0 0 24 24"
+                                                                  stroke-width="2.5" stroke="#7bc62d" fill="none"
+                                                                  stroke-linecap="round" stroke-linejoin="round">
+                                                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                                  <path d="M6 6h8a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-8" />
+                                                                  <line x1="8" y1="6" x2="8" y2="18" />
+                                                                  <line x1="8" y1="12" x2="14" y2="12" />
+                                                                  <line x1="9" y1="3" x2="9" y2="6" />
+                                                                  <line x1="13" y1="3" x2="13" y2="6" />
+                                                                  <line x1="9" y1="18" x2="9" y2="21" />
+                                                                  <line x1="13" y1="18" x2="13" y2="21" />
+                                                            </svg>
+                                                      </div>
+                                                      <div class="chip none">
+                                                            <div class="chip-line"></div>
+                                                            <div class="chip-line"></div>
+                                                            <div class="chip-line"></div>
+                                                            <div class="chip-line"></div>
+                                                            <div class="chip-main"></div>
+                                                      </div>
+                                                </div>
+                                                <p class="textMovil">3456 9087 5612 4532</p>
+                                                <p class="cardCredit_numer">
+                                                <div class="cardCredit__space-50">
+                                                      <span class="cardCredit__label">Propietario</span>
+                                                      <p class="cardCredit__info">
+                                                            COPERBANK</p>
+                                                </div>
+                                                <div class="cardCredit__space-25">
+                                                      <span class="cardCredit__label">Val:</span>
+                                                      <p class="cardCredit__info">
+                                                            11/22
+                                                      </p>
+                                                </div>
+                                                <div class="cardCredit__space-25">
+                                                      <span class="cardCredit__label">Venc:</span>
+                                                      <p class="cardCredit__info">
+                                                            11/27
+                                                      </p>
+                                                </div>
+                                          </div>
+
+                                          <div class="cardCredit__back cardCredit__part cardCreditMovil">
+                                                <div class="cardCredit__black-line cardCreditMovil"></div>
+                                                <div class="cardCredit__back-content cardCreditMovil">
+                                                      <div class="cardCredit__secret">
+                                                            <p class="cardCredit__secret--last">XXX</p>
+                                                            <p class="relative"></p>
+                                                      </div>
+                                                </div>
+                                          </div>
+
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+            </main>
+
+            <footer class="bg-light w-100">
+                  <div class="d-flex gap-3 justify-content-center pt-2 cotizacion">
+                        <div class="d-flex gap-1 justify-content-center pt-2 cotizacion">
+                              <h5 class="d-flex align-self-center">Seguinos en:</h5>
+                              <div class="align-self-center">
+                                    <a href="http://www.facebook.com"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-brand-facebook" width="44"
+                                                height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7bc62d"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path
+                                                      d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                                          </svg></a>
+                                    <a href="http://www.instagram.com"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-brand-instagram" width="44"
+                                                height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7bc62d"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <rect x="4" y="4" width="16" height="16" rx="4" />
+                                                <circle cx="12" cy="12" r="3" />
+                                                <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+                                          </svg></a>
+                                    <a href="http://www.youtube.com"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-brand-youtube" width="44"
+                                                height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7bc62d"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <rect x="3" y="5" width="18" height="14" rx="4" />
+                                                <path d="M10 9l5 3l-5 3z" />
+                                          </svg></a>
+                              </div>
+                        </div>
+                        <div class="d-flex gap-1 justify-content-center pt-2 cotizacion">
+                              <h5 class="d-flex align-items-center">Encontra tu surcursal más cercana:</h5>
+                              <a href="https://www.google.com/maps/"><svg xmlns="http://www.w3.org/2000/svg"
+                                          class="icon icon-tabler icon-tabler-map-pin" width="44" height="44"
+                                          viewBox="0 0 24 24" stroke-width="1.5" stroke="#7bc62d" fill="none"
+                                          stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                          <circle cx="12" cy="11" r="3" />
+                                          <path
+                                                d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                                    </svg></a>
+                        </div>
+                  </div>
+
+                  <div class="d-flex p-2 cotizacion">
+                        <a href="https://www.bcra.gob.ar/BCRAyVos/Comparacion_de_Comisiones.asp"><img class="financiero"
+                                    src="./img/usuariosfinancieros.jpeg" alt="usuarios financieros"></a>
+                        <div class="p-2">
+                              <p class="disclaimer">Normativa Protección a Usuarios de Servicios Financieros: Caja de
+                                    ahorro pesos $0,
+                                    según
+                                    Comunicación
+                                    BCRA "A" 5928 - Cuenta corriente pesos Cash (Mantenimiento mensual) $1.324,82 -
+                                    Transacción por
+                                    ATM
+                                    en Red CoperB $0 - Transacción por ATM Red Banelco $106,31 - Transacción por ATM Red
+                                    Link
+                                    $130,27-
+                                    Comisión por mantenimiento de Cuenta para Tarjeta de Crédito Visa $ 410,92
+                                    MasterCard $ 410,92 -
+                                    Comisión por Renovación de tarjeta de crédito Visa nacional $2340,14. Las comisiones
+                                    incluyen
+                                    IVA.
+                              </p>
+                              <a class="text-muted"
+                                    href="https://www.bcra.gob.ar/BCRAyVos/Comparacion_de_Comisiones.asp">Comparación de
+                                    Comisiones</a>
+                        </div>
+                  </div>
+            </footer>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+      <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="payments.js"></script>
+
+</body>
+
+</html>

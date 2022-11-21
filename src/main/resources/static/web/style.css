@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;1,200&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background-color: rgb(204, 228, 80);
+}
+
+.dark {
+    background-color: black;
+}
+
+main {
+    background-color: rgba(235, 231, 231, 0.703);
+    margin: 15px;
+    border-radius: 3px;
+    box-shadow: -5px 5px 5px 0px #A4A5AD,
+        5px -5px 4px -1px #CEBBC9;
+}
+
+.mainAccount {
+    min-height: 62.3vh;
+}
+
+.boton_info {
+    background-color: rgb(204, 228, 80);
+}
+
+.verde {
+    background-color: rgb(204, 228, 80);
+}
+
+.financiero {
+    width: 300px;
+}
+
+.tarjetaInfo:hover {
+    filter: drop-shadow(8px 8px 10px gray);
+
+}
+
+.disclaimer {
+    font-size: 12px;
+}
+
+.movimiento {
+    border: 15px solid transparent;
+}
+
+.movimiento:hover {
+    filter: drop-shadow(8px 8px 10px gray);
+    border-image: url("./img/borde4.jpeg") 20% stretch;
+}
+
+.volver {
+    position: absolute;
+}
+.volver:hover{
+    background-color: white !important;
+}
+
+.botonDetalles {
+    display: none;
+}
+
+
+/*.switch {
+    width: 60px;
+    height: 30px;
+    background: #343D5B;
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+}
+
+.switch:active {
+    background-color: rgb(204, 228, 80);
+}
+
+.switch:active::after {
+    right: 0;
+    left: unset;
+}
+
+.switch::after{
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background: #f1f1f1;
+    top: 0;
+    left: 0;
+    right: unset;
+    border-radius: 100px;
+    transition: 3s ease all;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .2);
+}
+
+.switch>span {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    background: none;
+    color: #fff;
+}*/
+
+/*TARJETA*/
+
+.cardCredit{
+    width: 320px;
+    height: 190px;
+      -webkit-perspective: 600px;
+      -moz-perspective: 600px;
+      perspective:600px;
+    }
+    
+    .cardCredit__part{
+      box-shadow: 1px 1px #aaa3a3;
+        top: 0;
+      position: absolute;
+    z-index: 1000;
+      left: 0;
+      display: inline-block;
+        width: 320px;
+        height: 190px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 8px;
+        -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+    }
+    .gold {
+        background-image: linear-gradient(90deg, rgb(247, 228, 55) 0%, rgba(162,210,111,1) 100%);
+    }
+    
+    .silver {
+        background-image: linear-gradient(90deg, rgb(148, 147, 144) 0%, rgba(162,210,111,1) 100%);
+    }
+    
+    .titanium {
+        background-image: linear-gradient(90deg, rgb(74, 73, 72) 0%, rgba(162,210,111,1) 100%);
+    }
+    
+    .cardCredit__front{
+      padding: 18px;
+    -webkit-transform: rotateY(0);
+    -moz-transform: rotateY(0);
+    }
+    
+    .cardCredit__back {
+      padding: 18px 0;
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    }
+    
+    .cardCredit__black-line {
+        margin-top: 5px;
+        height: 38px;
+        background-color: #303030;
+    }
+    
+    .cardCredit__logo {
+        height: 16px;
+    }
+    
+    .cardCredit__front-logo{
+          position: absolute;
+        top: 18px;
+        right: 18px;
+    }
+    .cardCredit__square {
+        border-radius: 5px;
+        height: 30px;
+    }
+    
+    .cardCredit_numer {
+        display: block;
+        width: 100%;
+        word-spacing: 4px;
+        font-size: 20px;
+        letter-spacing: 2px;
+        color: rgb(15, 15, 15);
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    
+    .cardCredit__space-50 {
+        width: 50%;
+        float: left;
+    }
+    
+    .cardCredit__space-25 {
+        width: 25%;
+        float: left;
+    }
+    
+    .cardCredit__label {
+        font-size: 10px;
+        text-transform: uppercase;
+        color: rgb(15, 15, 15);
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+    
+    .cardCredit__info {
+        margin-bottom: 0;
+        margin-top: 5px;
+        font-size: 16px;
+        line-height: 18px;
+        color: rgb(15, 15, 15);
+        font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+
+    /*MODAL INICIO A TARJETAS*/
+
+    .modal1 {
+        width: 100%;
+        min-height: 120vh;
+        
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        display: flex;
+        
+        animation: modal1 1s 1s forwards;
+        visibility: hidden;
+        opacity: 0;
+    }
+    
+    .contenido1 {
+        margin: auto;
+        width: 40%;
+        height: 40%;
+        border-radius: 10px;
+        background-color: rgba(206, 240, 155, 0.874);
+    }
+    
+    #cerrar {
+        display: none;
+    }
+
+    .botonCerrar:hover {
+        background-color: white;
+    }
+    
+    #cerrar + label {
+        position: fixed;
+        color: rgb(0, 0, 0);
+        font-size: 25px;
+        z-index: 50;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        border-radius: 50%;
+        right: 150px;
+        top: 150px;
+        cursor: pointer;
+        
+        animation: modal1 1s 1s forwards;
+        visibility: hidden;
+        opacity: 0;
+        background-color:rgba(206, 240, 155, 0.874);
+    }
+    
+    #cerrar:checked + label, #cerrar:checked ~ .modal1 {
+        display: none;
+    }
+
+
+    .accordion-button:not(.collapsed){
+        color:rgba(7, 7, 7, 0.874) !important;
+        background-color: rgba(209, 236, 168, 0.874) !important;
+    }
+
+    .accordion-button:focus {
+        border-color: rgba(206, 240, 155, 0.874) !important;
+    }
+
+    .accordion{
+        --bs-accordion-btn-focus-border-color: rgba(206, 240, 155, 0.874) !important;
+        --bs-accordion-active-color: rgba(206, 240, 155, 0.874) !important;
+        --bs-accordion-active-bg: rgba(206, 240, 155, 0.874) !important;
+
+    } 
+    
+    @keyframes modal1 {
+        100% {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+@media screen and (max-width: 768px) {
+    
+    .movil {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .prestamos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tarjetaPrestamo {
+        width: 75% !important;
+    }
+
+
+    .datosMovil {
+        margin-top: 8px;
+    }
+    
+}
+
+
+@media screen and (max-width: 425px) {
+    .movil {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movilcard {
+        width: 95% !important;
+    }
+
+    .movilCarrousel {
+        width: 100% !important;
+        flex-direction: column;
+    }
+
+    .cotizacion {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .coper {
+        width: 66% !important;
+    }
+
+    .tarjetaInfo {
+        width: 85vw !important;
+    }
+
+    .volver{
+        position: relative;
+    }
+
+    /* .tablaMovil {
+        width: 100%;
+        overflow: scroll;
+    } */
+
+    .botonDetalles {
+        display: block;
+    }
+
+    .displayNone {
+        display: none;
+    }
+
+    .prestamos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tarjetaPrestamo {
+        width: 75% !important;
+    }
+
+    .publicidad {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+
+    .movil375 {
+        flex-direction: column !important;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .card320 {
+        flex-direction: column;
+    }
+
+    .botonTrans{
+        width: 30%;
+        align-self: center;
+    }
+
+    .none {
+        display: none;
+    }
+
+    .navMovil{
+        width: 200px;
+        padding-left: 0px;
+    }
+
+    .hamburguesa {
+        padding-right: 5px;
+    }
+}

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Cuentas | CoperBank</title>
+      <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+      <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+      <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+      <div id="app">
+            <header class="d-flex">
+                  <nav class="navbar bg-light w-50 coper navMovil">
+                        <div class="container-fluid navMovil">
+                              <a class="navbar-brand" href="./index.html" @click="cerrarSesion()">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                          class="icon icon-tabler icon-tabler-currency-cent" width="44" height="44"
+                                          viewBox="0 0 24 24" stroke-width="2.5" stroke="#7bc62d" fill="none"
+                                          stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                          <path
+                                                d="M16.007 7.54a5.965 5.965 0 0 0 -4.008 -1.54a5.996 5.996 0 0 0 -5.992 6c0 3.314 2.682 6 5.992 6a5.965 5.965 0 0 0 4.004 -1.536" />
+                                          <path d="M12 20v-2" />
+                                          <path d="M12 6v-2" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                          class="icon icon-tabler icon-tabler-currency-bitcoin" width="44" height="44"
+                                          viewBox="0 0 24 24" stroke-width="2.5" stroke="#7bc62d" fill="none"
+                                          stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                          <path d="M6 6h8a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-8" />
+                                          <line x1="8" y1="6" x2="8" y2="18" />
+                                          <line x1="8" y1="12" x2="14" y2="12" />
+                                          <line x1="9" y1="3" x2="9" y2="6" />
+                                          <line x1="13" y1="3" x2="13" y2="6" />
+                                          <line x1="9" y1="18" x2="9" y2="21" />
+                                          <line x1="13" y1="18" x2="13" y2="21" />
+                                    </svg>
+                                    CoperBank
+                              </a>
+                        </div>
+                  </nav>
+                  <nav class="navbar navbar-expand-lg bg-light w-50">
+                        <div class="container-fluid d-flex justify-content-end hamburguesa">
+                              <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                              </button>
+                              <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                                    <div class="navbar-nav">
+                                          <button class="btn boton_info border border-success datosMovil" type="button"
+                                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+                                                aria-controls="offcanvasWithBothOptions">Mis datos</button>
+                                          <a class="nav-link active" href="./accounts.html">Cuentas</a>
+                                          <a class="nav-link" href="./cards.html">Tarjetas</a>
+                                          <a class="nav-link" href="./transfers.html">Transferencias</a>
+                                          <a class="nav-link" href="./extras/pagos.html">Pagos</a>
+                                          <a class="nav-link" href="./index.html" @click="cerrarSesion()"><span
+                                                      class="material-symbols-outlined">
+                                                      logout
+                                                </span></a>
+                                    </div>
+                              </div>
+                        </div>
+                  </nav>
+            </header>
+            {{clienteAdmin}}
+            <main class="p-3 d-flex flex-column">
+                  <div class="d-flex flex-column text-center">
+                        <h1>Bienvenido a CoperBank</h1>
+                        <h6>Tu banco de confianza</h6>
+                  </div>
+
+                  <!-- CUENTAS -->
+                  <div class="d-flex gap-5 m-2  movil" >
+                        <div class="card w-50 movilcard movimiento" v-for="cuenta in cuentas">
+                              <a :href="'./account.html?id='+cuenta.id" class="text-dark text-decoration-none">
+                                    <div class="card-content">
+                                          <div class="card-body card320 cleartfix d-flex justify-content-between">
+                                                <div class="media align-items-stretch">
+                                                      <div class="align-self-center">
+                                                            <h2 class="mr-2">{{modificarSaldo(cuenta.balance)}}</h2>
+                                                      </div>
+                                                      <div class="media-body d-flex flex-column">
+                                                            <h4>Saldo disponible</h4>
+                                                            <span>Cuenta: {{cuenta.number}}</span>
+                                                            <span class="mb-2">Fecha de creacion:
+                                                                  {{cuenta.creationDate.substring(0,10)}}</span>
+                                                      </div>
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-between gap-3">
+                                                      <span class="material-symbols-outlined align-self-center none">
+                                                            account_balance_wallet
+                                                      </span>
+                                                      <span class="btn boton_info border border-success mb-2 d-flex gap-1 botonTrans"
+                                                            type="button"><span class="material-symbols-outlined">
+                                                                  query_stats
+                                                            </span></span>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </a>
+                        </div>
+
+                        <!-- BOTON CREAR TARJETA -->
+
+                        <div class="card w-50 movilcard movimiento d-flex flex-column align-items-center justify-content-center"
+                              v-if="cuentas.length < 3">
+                              <a class="text-dark text-decoration-none">
+                                    <div class="card-content">
+                                          <div class="card-body card320 cleartfix d-flex justify-content-between">
+                                                <div class="media align-items-stretch">
+                                                      <div class="align-self-center">
+                                                            <h2 class="mr-2 fs-4">¿Necesitás otra cuenta?</h2>
+                                                      </div>
+                                                      <div class="media-body d-flex flex-column">
+                                                            <button class="btn verde border border-success mt-3"
+                                                                  @click="crearCuenta()">Crear cuenta</button>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </a>
+                        </div>
+                  </div>
+
+                  <div class="d-flex flex-column movil gap-3">
+                        <!-- PAGINA ADMINISTRADOR -->
+
+                        <div class=" d-flex gap-5 movil w-100" :class="{'pt-4': cliente.email == 'admin@mindhub.com'}"  v-if="cliente.email == 'admin@mindhub.com'">
+                              <!--PRESTAMOS PARA APROBAR-->
+                              <div class="card text-center movilcard w-50">
+                                    <div class="card-header">
+                                          <ul class="nav nav-tabs card-header-tabs d-flex gap-2">
+                                                <li class="nav-item">
+                                                      <a class="nav-link active" aria-current="true" href="#">Prestamos
+                                                            para
+                                                            aprobar o rechazar</a>
+                                                </li>
+                                                <li>
+                                                      <button type="button"
+                                                            class="btn border border-success verde transferButton"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#staticBackdrop">Crear prestamo</button>
+                                                </li>
+                                          </ul>
+                                    </div>
+                                    <div class="card-body">
+                                          <div class="d-flex gap-3 flex-wrap prestamos justify-content-center">
+                                                <div class="card text-center tarjetaPrestamo border"
+                                                      :class="{ 'border-secondary': prestamo.status == 'outstanding'}"
+                                                      v-for="prestamo in aprobar">
+                                                      <div class="card-header">
+                                                            {{prestamo.name}}
+                                                      </div>
+                                                      <div class="card-body">
+                                                            <h5 class="card-title">{{modificarSaldo(prestamo.amount)}}
+                                                            </h5>
+                                                            <h6>Id del cliente: {{prestamo.idClient}}</h6>
+                                                            <h6>{{prestamo.client}}</h6>
+                                                            <div
+                                                                  class="card-tittle d-flex gap-3 align-self-center movil375">
+                                                                  <div class="d-flex gap-2">
+                                                                        <button
+                                                                              class="btn border border-success text-success"
+                                                                              @click.prevent="aprobarPrestamo(prestamo.id)">Aprobar</button>
+                                                                  </div>
+                                                                  <div class="d-flex gap-2">
+                                                                        <button
+                                                                              class="btn border border-danger text-danger"
+                                                                              @click.prevent="rechazarPrestamo(prestamo.id)">Rechazar</button>
+                                                                  </div>
+                                                            </div>
+                                                      </div>
+                                                      <div class="card-footer text-muted">
+                                                            CoperBank
+                                                      </div>
+                                                </div>
+                                                <h5 v-if="aprobar.length <= 0">No hay prestamos pendientes.</h5>
+                                                <!-- <div class="d-flex flex-column justify-content-center"
+                                                v-if="loans.length == 0">
+                                                <p class="card-text">{{cliente.firstName}}, aún no tenés prestamos.</p>
+                                                <a href="#" class="btn verde border border-success w-50 align-self-center">Solicitar</a>
+                                          </div> -->
+                                          </div>
+                                    </div>
+                              </div>
+
+                              <!-- VENTANA MODAL CREAR PRESTAMO -->
+
+                              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                          <div class="modal-content">
+                                                <div class="modal-header verde">
+                                                      <h5 class="modal-title" id="staticBackdropLabel">Crear Prestamo
+                                                      </h5>
+                                                      <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                      <div class="card-body text-center">
+
+                                                            <div class="p-0">
+
+                                                                  <form action="" class="d-flex flex-column align-items-center gap-3 mt-4"
+                                                                        v-if="cliente.email == 'admin@mindhub.com'">
+                                                                        <div class="d-flex gap-3">
+                                                                              <label for="nombre">Nombre:</label>
+                                                                              <input v-model="nombrePrestamovModel"
+                                                                                    type="text" name="nombre"
+                                                                                    id="nombre">
+                                                                        </div>
+                                                                        <div class="d-flex gap-3">
+                                                                              <label for="monto">Monto:</label>
+                                                                              <input v-model="maxAmountvModel"
+                                                                                    type="number" name="monto"
+                                                                                    id="monto">
+                                                                        </div>
+                                                                        <div class="d-flex gap-2">
+                                                                              <label for="">Cuotas:</label>
+                                                                              <label for="">3</label>
+                                                                              <input v-model="cuotasvModel"
+                                                                                    type="checkbox" value="3">
+                                                                              <label for="">6</label>
+                                                                              <input v-model="cuotasvModel"
+                                                                                    type="checkbox" value="6">
+                                                                              <label for="">12</label>
+                                                                              <input v-model="cuotasvModel"
+                                                                                    type="checkbox" value="12">
+                                                                              <label for="">24</label>
+                                                                              <input v-model="cuotasvModel"
+                                                                                    type="checkbox" value="24">
+                                                                        </div>
+                                                                        <div class="d-flex gap-3">
+                                                                              <label for="">Otra</label>
+                                                                              <input v-model="otroCuotasvModel"
+                                                                                    type="number">
+
+                                                                        </div>
+                                                                        <div class="d-flex gap-3">
+                                                                              <label for="interes">Interes:</label>
+                                                                              <input v-model="interesvModel"
+                                                                                    type="number" name="interes"
+                                                                                    id="interes">
+                                                                        </div>
+                                                                        <p class="text-danger">
+                                                                              El interes debe ser mayor a 1 y menor o igual a 2</p>
+                                                                        <p class="text-danger"
+                                                                              v-if="nombrePrestamovModel == '' || maxAmountvModel == 0 || cuotasvModel.length == 0">
+                                                                              Todos los campos son obligatorios</p>
+                                                                              <div class="d-flex gap-3">
+                                                                        <button @click.prevent="crearPrestamo()"
+                                                                              class="btn border border-success verde"
+                                                                              :class="{ 'disabled': nombrePrestamovModel == '' || maxAmountvModel == 0 || cuotasvModel.length == 0 || interesvModel == 0}">Crear
+                                                                              prestamo</button>
+                                                                              </div>
+                                                                  </form>
+                                                            </div>
+                                                      </div>
+                                                </div>
+
+                                                <div class="modal-footer verde">
+                                                      <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cancelar</button>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+
+                              <!--BUSCAR CLIENTE-->
+                              <div class="card text-center movilcard w-50">
+                                    <div class="card-header">
+                                          <ul class="nav nav-tabs card-header-tabs">
+                                                <li class="nav-item">
+                                                      <a class="nav-link active" aria-current="true" href="#">Buscar
+                                                            cliente</a>
+                                                </li>
+                                          </ul>
+                                    </div>
+                                    <div class="card-body">
+                                          <div class="d-flex gap-3 flex-wrap prestamos justify-content-center w-100">
+                                                <div class="card text-center tarjetaPrestamo border w-75">
+                                                      <div class="card-header">
+                                                            CoperBank
+                                                      </div>
+                                                      <div class="card-body">
+                                                            <label for="" class="me-3">Id cliente:</label>
+                                                            <input type="number" v-model="clienteBuscadoVModel"
+                                                                  style="width: 130px;">
+                                                      </div>
+                                                      <div class="card-footer text-muted">
+                                                            Administrador
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <div class="accordion accordion-flush" id="accordionFlushExample"
+                                          v-for="cliente in clienteBuscado" v-if="clienteBuscado.length != 0">
+                                          <div class="accordion-item">
+                                                <h2 class="accordion-header" id="flush-heading">
+                                                      <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#flush-collapse"
+                                                            aria-expanded="false" aria-controls="flush-collapse">
+                                                            {{cliente.firstName}} {{cliente.lastName}} (Id:
+                                                            {{cliente.id}})
+                                                      </button>
+                                                </h2>
+                                                <div id="flush-collapse" class="accordion-collapse collapse"
+                                                      aria-labelledby="flush-heading"
+                                                      data-bs-parent="#accordionFlushExample">
+                                                      <div class="accordion-body">
+                                                            <p> Email: </span>{{cliente.email}}</p>
+                                                            <p>Cuentas: </p>
+                                                            <p v-for="cuenta in cliente.accounts">{{cuenta.number}} -
+                                                                  Saldo: {{modificarSaldo(cuenta.balance)}}</p>
+                                                            <p>Tarjetas:</p>
+                                                            <p v-for="tarjeta in cliente.cards">{{tarjeta.type}}O,
+                                                                  {{tarjeta.color}}</p>
+                                                            <p>Prestamos:</p>
+                                                            <p v-for="prestamo in cliente.loans">{{prestamo.name}},
+                                                                  {{modificarSaldo(prestamo.amount)}},
+                                                                  {{prestamo.payments}}, estado: {{prestamo.status}}</p>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+
+                        </div>
+
+                        <!-- PAGINA CLIENTE -->
+
+                        <div class="d-flex gap-5 pb-4 pt-4 movil w-100"  v-if="cliente.email != 'admin@mindhub.com'">
+                              <!-- TAJETAS -->
+                              <div class="card text-center movilcard" style="width: 50vw;">
+                                    <div class="card-header">
+                                          <ul class="nav nav-tabs card-header-tabs">
+                                                <li class="nav-item">
+                                                      <a class="nav-link active" aria-current="true"
+                                                            href="#">Tarjetas</a>
+                                                </li>
+                                          </ul>
+                                    </div>
+                                    <div class="card-body">
+                                          <div class="d-flex flex-column justify-content-center">
+                                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                                      <div class="accordion-item" v-for="tarjeta in tarjetas">
+                                                            <h2 class="accordion-header"
+                                                                  :id="'flush-heading'+tarjeta.id">
+                                                                  <button class="accordion-button collapsed"
+                                                                        type="button" data-bs-toggle="collapse"
+                                                                        :data-bs-target="'#flush-collapse'+tarjeta.id"
+                                                                        aria-expanded="false"
+                                                                        :aria-controls="'flush-collapse'+tarjeta.id">
+                                                                        {{tarjeta.type}}O {{tarjeta.color}}
+                                                                  </button>
+                                                            </h2>
+                                                            <div :id="'flush-collapse'+tarjeta.id"
+                                                                  class="accordion-collapse collapse"
+                                                                  :aria-labelledby="'flush-heading'+tarjeta.id"
+                                                                  data-bs-parent="#accordionFlushExample">
+                                                                  <div class="accordion-body">
+                                                                        <p>{{tarjeta.number.replaceAll("-", " ")}}</p>
+                                                                        <p>{{tarjeta.cardHolder}}</p>
+                                                                        <div
+                                                                              class="d-flex gap-3 justify-content-center">
+                                                                              <p>Valido: {{tarjeta.thruDate}}</p>
+                                                                              <p>CVV: {{tarjeta.cvv}}</p>
+                                                                        </div>
+                                                                  </div>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center"
+                                                      v-if="tarjetas.length == 0">
+                                                      <p class="card-text">Aún no tenés tarjetas.</p>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                              </div>
+
+                              <!--PRESTAMOS-->
+                              <div class="card text-center  movilcard" style="width: 50vw;">
+                                    <div class="card-header">
+                                          <ul class="nav nav-tabs card-header-tabs">
+                                                <li class="nav-item">
+                                                      <a class="nav-link active" aria-current="true"
+                                                            href="#">Prestamos</a>
+                                                </li>
+                                          </ul>
+                                    </div>
+                                    <div class="card-body">
+                                          <div class="d-flex gap-3 prestamos justify-content-center">
+                                                <div class="card text-center w-50 tarjetaPrestamo border"
+                                                      :class="{ 'border-warning': prestamo.status == 'outstanding', 'border-success': prestamo.status == 'ok', 'border-danger': prestamo.status == 'rejected' }"
+                                                      v-for="prestamo in loans" v-show="prestamo.status != 'deleted'">
+                                                      <div class="card-header">
+                                                            {{prestamo.name}}
+                                                      </div>
+                                                      <div class="card-body">
+                                                            <h5 class="card-title">{{modificarSaldo(prestamo.amount)}}
+                                                            </h5>
+                                                            <h6 class="card-text">{{modificarSaldo(prestamo.amount /
+                                                                  prestamo.payments)}} al mes.</h6>
+                                                            <h6 class="card-text text-success"
+                                                                  v-if="prestamo.status == 'ok'">
+                                                                  Aprobado</h6>
+                                                            <h6 class="card-text text-warning"
+                                                                  v-if="prestamo.status == 'outstanding'">Aprobacíon
+                                                                  pendiente
+                                                            </h6>
+                                                            <h6 class="card-text text-danger"
+                                                                  v-if="prestamo.status == 'rejected'">RECHAZADO
+                                                            </h6>
+                                                      </div>
+                                                      <div class="card-footer text-muted">
+                                                            <span v-if="prestamo.status != 'rejected'">Cuotas:
+                                                                  {{prestamo.payments}}</span>
+                                                            <span v-if="prestamo.status == 'rejected'"><button
+                                                                        class="btn p-0 pe-1 ps-1 border border-danger text-danger"
+                                                                        @click.prevent="eliminarPrestamo(prestamo)">Eliminar</button></span>
+                                                      </div>
+                                                </div>
+
+                                                <!-- PEDIR PRESTAMO -->
+                                                <div class="card text-center w-50 tarjetaPrestamo"
+                                                      v-if="botonPrestamos.length < 3">
+                                                      <div class="card-header">
+                                                            Solicitar prestamo
+                                                      </div>
+                                                      <div class="card-body">
+                                                            <a href="./loan-application.html"
+                                                                  class="btn verde border border-success w-50 align-self-center">Solicitar</a>
+                                                      </div>
+                                                      <div class="card-footer text-muted">
+                                                            <span>CoperBank</span>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+
+                  </div>
+
+                  <!--TRANSACCIONES-->
+
+                  <div class="card text-center tablaMovil mt-4">
+                        <div class="card-header">
+                              <ul class="nav nav-tabs card-header-tabs">
+                                    <li class="nav-item">
+                                          <a class="nav-link active" aria-current="true" href="#">Transacciones</a>
+                                    </li>
+                              </ul>
+                        </div>
+
+                        <div class="card-body">
+                              <table class="table text-center" v-if="movimientosOrdenados.length != 0">
+                                    <thead>
+                                          <tr>
+                                                <th class="displayNone" scope="col">Cuenta</th>
+                                                <th scope="col">Descripcion</th>
+                                                <th scope="col">Valor</th>
+                                                <th class="displayNone" scope="col">Saldo</th>
+                                                <th class="displayNone" scope="col">Fecha</th>
+                                                <th class="displayNone" scope="col">Tipo</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody>
+                                          <tr :class="{ 'table-danger': movimiento.type == 'DEBITO', 'table-success': movimiento.type == 'CREDITO' }"
+                                                v-for="movimiento in movimientosOrdenados">
+                                                <td class="displayNone">{{movimiento.numeroCuenta}}</td>
+                                                <td class="displayNone">{{movimiento.description}}</td>
+                                                <td>{{modificarSaldo(movimiento.amount)}}</td>
+                                                <td class="displayNone">{{modificarSaldo(movimiento.balanceAccount)}}</td>
+                                                <td class="displayNone">{{movimiento.date.slice(0,10)}}
+                                                      {{movimiento.date.slice(11,16)}}</td>
+                                                <td class="displayNone">{{movimiento.type}}</td>
+                                                <td class="botonDetalles"><button type="button" class="btn btn-light"
+                                                            data-bs-toggle="modal" data-bs-target="#infoTransaccion"
+                                                            @click="detalles(movimiento)">+</button></td>
+                                          </tr>
+                                    </tbody>
+                              </table>
+                              <div class="d-flex flex-column justify-content-center"
+                                    v-if="movimientosOrdenados.length == 0">
+                                    <p class="card-text">{{cliente.firstName}}, aún no hiciste ninguna transacción..</p>
+                              </div>
+                        </div>
+                  </div>
+
+
+                  <!--VENTANA INFORMACION PERSONAL-->
+                  <div class="offcanvas offcanvas-start verde" data-bs-scroll="true" tabindex="-1"
+                        id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <div class="m-3 bg-light border border-success">
+                              <div class="offcanvas-header">
+                                    <h2 class="offcanvas-title d-flex gap-3" id="offcanvasWithBothOptionsLabel"> <span
+                                                class="material-symbols-outlined align-self-center">
+                                                person
+                                          </span>{{cliente.firstName}} {{cliente.lastName}}
+                                    </h2>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                          aria-label="Close"></button>
+                              </div>
+                              <div class="offcanvas-body">
+                                    <h4>Nombre: {{cliente.firstName}}</h4>
+                                    <h4>Apellido: {{cliente.lastName}}</h4>
+                                    <h4>Email: {{cliente.email}}</h4>
+                                    <h4>Cuentas disponibles: {{cuentas.length}}</h4>
+                                    <h4>Balance total: ${{balanceTotal}}</h4>
+                                    <h4 v-if="tarjetas.length > 0">Tarjetas: {{tarjetas.length}}</h4>
+                                    <div class="accordion mt-3" id="accordionExample">
+                                          <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingTwo">
+                                                      <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                            aria-expanded="false" aria-controls="collapseTwo">
+                                                            Cambiar contraseña
+                                                      </button>
+                                                </h2>
+                                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                                      aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                      <div class="accordion-body">
+                                                            <form action="" class="d-flex flex-column gap-1">
+                                                                  <label for="contraseña">Nueva contraseña:</label>
+                                                                  <input v-model="nuevaContraseña" type="password"
+                                                                        name="contraseña" id="contraseña">
+                                                                  <button @click.prevent="editUsuario()"
+                                                                        class="btn border border-success verde mt-3">Cambiar</button>
+                                                            </form>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+                  <!-- VENTANA MODAL DETALLE TRANSACCION -->
+                  <div class="modal fade" id="infoTransaccion" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                              <div class="modal-content">
+                                    <div class="modal-header verde">
+                                          <h5 class="modal-title" id="staticBackdropLabel">Transacción</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                          <div class="card-body">
+                                                <h4>Cuenta: {{transaccionModal.numeroCuenta}}</h4>
+                                                <h4>Descripcion: {{transaccionModal.description}}</h4>
+                                                <h4>Valor: ${{transaccionModal.amount}}</h4>
+                                                <h4>Saldo: {{modificarSaldo(transaccionModal.balanceAccount)}}</h4>
+                                                <h4>Fecha: {{fechaTrans}}</h4>
+                                                <h4>Tipo: {{transaccionModal.type}}</h4>
+
+                                          </div>
+                                    </div>
+
+                                    <div class="modal-footer verde">
+                                          <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cerrar</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </main>
+
+            <footer class="bg-light w-100">
+                  <div class="d-flex gap-3 justify-content-center pt-2 cotizacion">
+                        <div class="d-flex gap-1 justify-content-center pt-2 cotizacion">
+                              <h5 class="d-flex align-self-center">Seguinos en:</h5>
+                              <div class="align-self-center">
+                                    <a href="http://www.facebook.com"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-brand-facebook" width="44"
+                                                height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7bc62d"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path
+                                                      d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                                          </svg></a>
+                                    <a href="http://www.instagram.com"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-brand-instagram" width="44"
+                                                height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7bc62d"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <rect x="4" y="4" width="16" height="16" rx="4" />
+                                                <circle cx="12" cy="12" r="3" />
+                                                <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+                                          </svg></a>
+                                    <a href="http://www.youtube.com"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-brand-youtube" width="44"
+                                                height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7bc62d"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <rect x="3" y="5" width="18" height="14" rx="4" />
+                                                <path d="M10 9l5 3l-5 3z" />
+                                          </svg></a>
+                              </div>
+                        </div>
+                        <div class="d-flex gap-1 justify-content-center pt-2 cotizacion">
+                              <h5 class="d-flex align-items-center">Encontra tu surcursal más cercana:</h5>
+                              <a href="https://www.google.com/maps/"><svg xmlns="http://www.w3.org/2000/svg"
+                                          class="icon icon-tabler icon-tabler-map-pin" width="44" height="44"
+                                          viewBox="0 0 24 24" stroke-width="1.5" stroke="#7bc62d" fill="none"
+                                          stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                          <circle cx="12" cy="11" r="3" />
+                                          <path
+                                                d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                                    </svg></a>
+                        </div>
+                  </div>
+
+                  <div class="d-flex p-2 cotizacion">
+                        <a href="https://www.bcra.gob.ar/BCRAyVos/Comparacion_de_Comisiones.asp"><img class="financiero"
+                                    src="./img/usuariosfinancieros.jpeg" alt="usuarios financieros"></a>
+                        <div class="p-2">
+                              <p class="disclaimer">Normativa Protección a Usuarios de Servicios Financieros: Caja de
+                                    ahorro pesos $0,
+                                    según
+                                    Comunicación
+                                    BCRA "A" 5928 - Cuenta corriente pesos Cash (Mantenimiento mensual) $1.324,82 -
+                                    Transacción por
+                                    ATM
+                                    en Red CoperB $0 - Transacción por ATM Red Banelco $106,31 - Transacción por ATM Red
+                                    Link
+                                    $130,27-
+                                    Comisión por mantenimiento de Cuenta para Tarjeta de Crédito Visa $ 410,92
+                                    MasterCard $ 410,92 -
+                                    Comisión por Renovación de tarjeta de crédito Visa nacional $2340,14. Las comisiones
+                                    incluyen
+                                    IVA.
+                              </p>
+                              <a class="text-muted"
+                                    href="https://www.bcra.gob.ar/BCRAyVos/Comparacion_de_Comisiones.asp">Comparación de
+                                    Comisiones</a>
+                        </div>
+                  </div>
+            </footer>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+      <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="accounts.js"></script>
+
+</body>
+
+</html>

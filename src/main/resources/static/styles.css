@@ -1,0 +1,49 @@
+body{
+    background-color: rgb(204, 228, 80);
+}
+
+.main {
+    background-color: rgba(235, 231, 231, 0.703);
+        margin: 15px;
+        border-radius: 3px;
+        box-shadow: -5px 5px 5px 0px #A4A5AD,
+        5px -5px 4px -1px #CEBBC9;
+}
+
+.verde {
+    background-color: rgb(204, 228, 80);
+}
+
+table {
+    background-color: rgb(204, 228, 80);
+}
+
+tr:hover{
+    background-color: rgb(163, 186, 47);
+}
+
+.ventModal {
+    background-color: #A12568;
+}
+
+@media screen and (max-width: 425px) {
+    .displayNone {
+    display: none;
+    }
+
+    .movil {
+    width: 90% !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    main {
+        flex-direction: column;
+    }
+
+    .movil2 {
+        width: 90% !important;
+        }
+
+        }

@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background-color: rgb(204, 228, 80);
+}
+
+.dark {
+    background-color: black;
+}
+
+main {
+    min-height: 63vh;
+    background-color: rgba(235, 231, 231, 0.703);
+    margin: 15px;
+    border-radius: 3px;
+    box-shadow: -5px 5px 5px 0px #A4A5AD,
+        5px -5px 4px -1px #CEBBC9;
+}
+
+
+.verde {
+    background-color: rgb(204, 228, 80);
+}
+
+.financiero {
+    width: 300px;
+}
+
+.disclaimer {
+    font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+    
+}
+
+
+@media screen and (max-width: 425px) {
+
+    .movil {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cotizacion {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .transferMovil {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .transferButton {
+        width: 100px !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .margin {
+        margin-right: 5px !important;
+    }
+
+    .width {
+        width: 75% !important;
+    }
+
+    .sinGap {
+        gap: 3px !important;
+    }
+}

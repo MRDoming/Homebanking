@@ -1,4 +1,4 @@
-package com.mindhub.homebanking;
+/*package com.mindhub.homebanking;
 
 import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.*;
@@ -124,4 +124,4 @@ public class RepositoriesTest {
         List<Transaction> transactions = transactionRepository.findAll();
         assertThat(transactions, hasItem(hasProperty("description", is("Carpinteria"))));
     }
-}
+}*/

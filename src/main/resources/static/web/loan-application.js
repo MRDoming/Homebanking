@@ -88,6 +88,13 @@ const app = Vue.createApp({
                             confirmButtonColor: 'lightgreen',
                         })
                     }
+
+                    if (error.response.data == "Missing amount") {
+                        Swal.fire({
+                            text: `El prestamo debe ser mayor a 0 y menor al monto máximo`,
+                            confirmButtonColor: 'lightgreen',
+                        })
+                    }
                 })
         },
         modificarSaldo(saldo) {

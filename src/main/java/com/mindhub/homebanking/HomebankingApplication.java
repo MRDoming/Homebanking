@@ -113,9 +113,10 @@ public class HomebankingApplication {
 			System.out.println(client45);
 			System.out.println(client46);*/
 
-			Client client2 = new Client("Copernico", "Dominguez", "admin@mindhub.com", passwordEncoder.encode("a"));
+			Client client = new Client("Copernico", "Dominguez", "admin@mindhub.com", passwordEncoder.encode("a"));
 
-			System.out.println(client2.toString());
+			clientRepository.save(client);
+			System.out.println(client.toString());
 
 		};
 	}

@@ -14,7 +14,7 @@ const app = Vue.createApp({
     },
     methods: {
         realizarPago() {
-            axios.post('/api/payments', { number: `${this.numeroTarjetavModel}`, cvv: `${this.cvvvModel}`, amount: `${this.montovModel}`, description: `${this.descripcionvModel}` })
+            axios.post('https://homebanking-production-8635.up.railway.app/api/payments', { number: `${this.numeroTarjetavModel}`, cvv: `${this.cvvvModel}`, amount: `${this.montovModel}`, description: `${this.descripcionvModel}` })
                 .then(response => {
                     Swal.fire({
                         text: 'Pago realizado con éxito',

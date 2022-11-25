@@ -45,6 +45,11 @@ public class PaymentsController {
 
         String numCard = string1 + "-" + string2 + "-" + string3 + "-" + string4;
         Card card = cardService.getCardByNumber(numCard);
+
+        if(card == null) {
+            return new ResponseEntity<>("wrong card", HttpStatus.FORBIDDEN);
+        }
+
         Account account = accountService.getAccountByNumber(card.getNumAccount());
 
         if (card != null) {
@@ -88,10 +93,11 @@ public class PaymentsController {
 
                 return new ResponseEntity<>("payment credit ok", HttpStatus.ACCEPTED);
             }
+
         }
 
 
-        return new ResponseEntity<>("wrong card", HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("payment fail", HttpStatus.FORBIDDEN);
 
     }
 

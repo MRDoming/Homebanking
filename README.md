@@ -1,6 +1,6 @@
 # CoperBank
 
-CoperBank fué mu proyecto principal a lo largo del bootcamp FullStack en MindHub.
+CoperBank fué mi proyecto principal a lo largo del bootcamp FullStack en MindHub.
 Las tecnologías que usé fueron HTML, CSS, bootstrap, JavaScript, Vue.js, y JAVA, SpringBoot, Gradle, Postman, y para los datos: H2 database y PostgresSQL.
 
 Te invito a que conozcas más de CoperBank:

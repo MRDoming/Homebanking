@@ -12,3 +12,16 @@ Cuenta con una landing page con información acerca del banco, el logo del mismo
 En la pagina propia del cliente, se encuentran las cuentas (con la posiblidad de crear más), las tarjetas, los prestamos pedidos y su estado (aprobado, pendiente de aprobacion o rechazado) y las transferencias de todas las cuentas del cliente logueado.
 
  ![imagen](https://raw.githubusercontent.com/MRDoming/homebanking/main/src/main/resources/static/web/img/cuenta.png)
+ 
+ Solamente cuando el cliente esta logueado, tiene acceso a las paginas tarjetas, transferencias y prestamos.
+ 
+  ![imagen](https://raw.githubusercontent.com/MRDoming/homebanking/main/src/main/resources/static/web/img/transferencias.png)
+  
+  ![imagen](https://raw.githubusercontent.com/MRDoming/homebanking/main/src/main/resources/static/web/img/pagos.png)
+
+CoperBank cuenta tambien con el rol de administrador, quien tiene la posibilidad de ver la informacion de todos los clientes registrados mediante su Id, y tambien aprobar o rechazar prestamos pedidos
+
+ ![imagen](https://raw.githubusercontent.com/MRDoming/homebanking/main/src/main/resources/static/web/img/administrador.png)
+ 
+ 
+
